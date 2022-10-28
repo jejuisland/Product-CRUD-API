@@ -21,19 +21,26 @@ export class AppService {
 
   create(product: Product): ProductInterface {
     var lastIndexofProduct: any;
-    this.product.forEach(function(i, idx, array){
-      if (idx === array.length - 1){ 
-        lastIndexofProduct =  i.id + 1
+    this.product.forEach(function (i, idx, array) {
+      if (idx === array.length - 1) {
+        lastIndexofProduct = i.id + 1
       }
-   });
+    });
     const newProduct = { id: lastIndexofProduct, ...product };
     this.product.push(newProduct);
     return newProduct;
   }
 
-  update(productId: number, product: UpdateProduct, ): ProductUpdateInterface {
-    const updateProduct = { id: productId, ...product };
-    this.product.push(updateProduct);
+  update(productId: number, product: UpdateProduct,): ProductUpdateInterface {
+    var updateProduct: any;
+    var dataProducts = this.findOneProducts(productId);
+    this.product.forEach((item, index, arr) => {
+      if (dataProducts.id === item.id) {
+        arr.splice(index, 1);
+        updateProduct = { id: productId, ...product };
+        this.product.push(updateProduct);
+      }
+    });
     return updateProduct;
   }
 

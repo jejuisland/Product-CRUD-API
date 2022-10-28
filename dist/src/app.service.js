@@ -33,8 +33,15 @@ let AppService = class AppService {
         return newProduct;
     }
     update(productId, product) {
-        const updateProduct = Object.assign({ id: productId }, product);
-        this.product.push(updateProduct);
+        var updateProduct;
+        var dataProducts = this.findOneProducts(productId);
+        this.product.forEach((item, index, arr) => {
+            if (dataProducts.id === item.id) {
+                arr.splice(index, 1);
+                updateProduct = Object.assign({ id: productId }, product);
+                this.product.push(updateProduct);
+            }
+        });
         return updateProduct;
     }
     findAll() {

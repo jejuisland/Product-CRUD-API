@@ -14,6 +14,10 @@ const swagger_1 = require("@nestjs/swagger");
 class UpdateProductDto {
 }
 __decorate([
+    (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
+], UpdateProductDto.prototype, "id", void 0);
+__decorate([
     (0, swagger_1.ApiProperty)({
         description: 'Name of products',
         type: 'string',

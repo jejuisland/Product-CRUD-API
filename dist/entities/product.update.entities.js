@@ -15,6 +15,10 @@ class UpdateProduct {
 }
 __decorate([
     (0, swagger_1.ApiProperty)(),
+    __metadata("design:type", Number)
+], UpdateProduct.prototype, "id", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
     __metadata("design:type", String)
 ], UpdateProduct.prototype, "name", void 0);
 __decorate([
